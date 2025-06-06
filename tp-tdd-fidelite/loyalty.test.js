@@ -14,4 +14,15 @@ describe('calculateLoyaltyPoints', () => {
     const cart = [{ type: 'standard', price: 35 }];
     expect(calculateLoyaltyPoints(cart)).toBe(3); // car Math.floor(35/10) = 3
   });
+
+  test('should return 2 points for a premium product costing 10€', () => {
+    const cart = [{ type: 'premium', price: 10 }];
+    expect(calculateLoyaltyPoints(cart)).toBe(2);
+  });
+
+  test('should return 14 points for a premium product costing 70€', () => {
+    const cart = [{ type: 'premium', price: 70 }];
+    expect(calculateLoyaltyPoints(cart)).toBe(14); // Math.floor(70/10)*2 = 14
+  });
+
 });
