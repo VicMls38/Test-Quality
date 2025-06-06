@@ -65,3 +65,16 @@ test('Présence de dette impayée → false', () => {
 });
 
 
+test('Essai gratuit → false', () => {
+  const subscription = {
+    status: 'active',
+    endDate: '2025-06-01',
+    hasBeenRenewed: false,
+    unpaidDebt: false,
+    isTrial: true,
+  };
+  const currentDate = '2025-06-06';
+  expect(canRenewSubscription(subscription, currentDate)).toBe(false);
+});
+
+
