@@ -1,5 +1,6 @@
-function calculateLoyaltyPoints() {
-  return 0;
+function calculateLoyaltyPoints(cart) {
+  if (!Array.isArray(cart) || cart.length === 0) return 0;
+
 }
 
 module.exports = { calculateLoyaltyPoints };
