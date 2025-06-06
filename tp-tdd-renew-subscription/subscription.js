@@ -1,5 +1,5 @@
 function canRenewSubscription(subscription, currentDate) {
-  // Red
+  return true; // Green minimal
 }
 
 module.exports = { canRenewSubscription };
