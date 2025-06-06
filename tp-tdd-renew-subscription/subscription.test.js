@@ -78,3 +78,16 @@ test('Essai gratuit → false', () => {
 });
 
 
+test('Limite exacte (endDate = currentDate) → true', () => {
+  const subscription = {
+    status: 'active',
+    endDate: '2025-06-06',
+    hasBeenRenewed: false,
+    unpaidDebt: false,
+    isTrial: false,
+  };
+  const currentDate = '2025-06-06';
+  expect(canRenewSubscription(subscription, currentDate)).toBe(true);
+});
+
+
