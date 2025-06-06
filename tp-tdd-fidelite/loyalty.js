@@ -1,3 +1,7 @@
+function pointsForStandard(price) {
+  return Math.floor(price / 10);
+}
+
 function calculateLoyaltyPoints(cart) {
   if (!Array.isArray(cart) || cart.length === 0) return 0;
 
@@ -5,7 +9,7 @@ function calculateLoyaltyPoints(cart) {
 
   for (const item of cart) {
     if (item.type === 'standard' && typeof item.price === 'number' && item.price > 0) {
-      points += Math.floor(item.price / 10);
+      points += pointsForStandard(item.price);
     }
   }
 
