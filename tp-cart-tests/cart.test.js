@@ -96,4 +96,31 @@ describe('Cart', () => {
       expect(myCart.total).toBe(0);
     });
   });
+
+  
+   describe('clearCart', () => {
+    test('vide le panier et remet le total à zéro', () => {
+      cart.addItem(myCart, { id: 1, price: 10, quantity: 2 });
+      cart.addItem(myCart, { id: 2, price: 5, quantity: 1 });
+      cart.clearCart(myCart);
+      expect(myCart.items).toHaveLength(0);
+      expect(myCart.total).toBe(0);
+    });
+  });
+
+  describe('résilience', () => {
+    test('ajouter un item avec quantity = 0 ne modifie pas le total mais ajoute l’item', () => {
+      const item = { id: 3, price: 10, quantity: 0 };
+      cart.addItem(myCart, item);
+      expect(myCart.items).toHaveLength(1);
+      expect(myCart.total).toBe(0);
+    });
+
+    test('ajouter un item avec price < 0 diminue le total en conséquence', () => {
+      const item = { id: 4, price: -10, quantity: 2 };
+      cart.addItem(myCart, item);
+      expect(myCart.items).toHaveLength(1);
+      expect(myCart.total).toBe(-20);
+    });
+  });
 });

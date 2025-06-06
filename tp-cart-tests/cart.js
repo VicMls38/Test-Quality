@@ -4,25 +4,21 @@ function createCart() {
 }
 
 function addItem(cart, item) {
-  if (cart.items.length > 0) {
-    let found = false;
-    for (let i = 0; i < cart.items.length; i++) {
-      if (cart.items[i].id === item.id) {
-        cart.items[i].quantity += item.quantity;
-        cart.total += item.price * item.quantity;
-        found = true;
-        break;
-      }
-    }
-    if (!found) {
-      cart.items.push({ ...item });
-      cart.total += item.price * item.quantity;
-    }
+  // Cherche l'item dans le panier
+  const existingItem = cart.items.find(i => i.id === item.id);
+
+  if (existingItem) {
+    // Si trouvé, incrémente la quantité
+    existingItem.quantity += item.quantity;
   } else {
+    // Sinon ajoute une copie de l'item
     cart.items.push({ ...item });
-    cart.total += item.price * item.quantity;
   }
+  
+  // Met à jour le total dans tous les cas
+  cart.total += item.price * item.quantity;
 }
+
 
 function removeItem(cart, itemId) {
   const index = cart.items.findIndex(i => i.id === itemId);
@@ -42,7 +38,13 @@ function applyDiscount(cart, code) {
   cart.total = cart.total * (1 - discount);
 }
 
-module.exports = { createCart, addItem, removeItem, applyDiscount };
+function clearCart(cart) {
+  cart.items = [];
+  cart.total = 0;
+}
+
+module.exports = { createCart, addItem, removeItem, applyDiscount, clearCart };
+
 
 
 
