@@ -20,8 +20,10 @@ function canRenewSubscription(subscription, currentDate) {
 function getRenewalReason(subscription, currentDate) {
   if (subscription.status !== 'active') return 'status';
   if (subscription.hasBeenRenewed) return 'alreadyRenewed';
+  if (subscription.unpaidDebt) return 'unpaidDebt';
   return 'OK';
 }
+
 
 
 
