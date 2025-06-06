@@ -22,9 +22,9 @@ function getRenewalReason(subscription, currentDate) {
   if (subscription.hasBeenRenewed) return 'alreadyRenewed';
   if (subscription.unpaidDebt) return 'unpaidDebt';
   if (subscription.isTrial) return 'trial';
+  if (new Date(subscription.endDate) > new Date(currentDate)) return 'date';
   return 'OK';
 }
-
 
 
 
