@@ -167,3 +167,18 @@ test('Date pas dépassée → "date"', () => {
   const date = '2025-06-06';
   expect(getRenewalReason(sub, date)).toBe('date');
 });
+
+
+
+test('Champ manquant ou type invalide → "invalid"', () => {
+  const sub = {
+    status: 'active',
+    // endDate est manquant
+    hasBeenRenewed: false,
+    unpaidDebt: false,
+    isTrial: false,
+  };
+  const date = '2025-06-06';
+  expect(getRenewalReason(sub, date)).toBe('invalid');
+});
+
