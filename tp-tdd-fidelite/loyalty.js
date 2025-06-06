@@ -1,9 +1,14 @@
-function pointsForStandard(price) {
-  return Math.floor(price / 10);
-}
+function calculatePointsForItem(item) {
+  if (typeof item.price !== 'number' || item.price <= 0) return 0;
 
-function pointsForPremium(price) {
-  return Math.floor(price / 10) * 2;
+  switch (item.type) {
+    case 'standard':
+      return Math.floor(item.price / 10);
+    case 'premium':
+      return Math.floor(item.price / 10) * 2;
+    default:
+      return 0;
+  }
 }
 
 function calculateLoyaltyPoints(cart) {
@@ -12,11 +17,7 @@ function calculateLoyaltyPoints(cart) {
   let points = 0;
 
   for (const item of cart) {
-    if (item.type === 'standard' && typeof item.price === 'number' && item.price > 0) {
-      points += pointsForStandard(item.price);
-    } else if (item.type === 'premium' && typeof item.price === 'number' && item.price > 0) {
-      points += pointsForPremium(item.price);
-    }
+    points += calculatePointsForItem(item);
   }
 
   return points;
