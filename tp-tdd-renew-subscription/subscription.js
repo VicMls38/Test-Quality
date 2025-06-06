@@ -18,8 +18,10 @@ function canRenewSubscription(subscription, currentDate) {
 
 
 function getRenewalReason(subscription, currentDate) {
+  if (subscription.status !== 'active') return 'status';
   return 'OK';
 }
+
 
 
 
