@@ -182,3 +182,18 @@ test('Champ manquant ou type invalide → "invalid"', () => {
   expect(getRenewalReason(sub, date)).toBe('invalid');
 });
 
+
+
+test('Performance : 1000 appels', () => {
+  const subs = Array.from({ length: 1000 }, (_, i) => ({
+    status: 'active',
+    endDate: '2025-06-01',
+    hasBeenRenewed: false,
+    unpaidDebt: false,
+    isTrial: false,
+  }));
+
+  const date = '2025-06-06';
+  const results = subs.map(sub => getRenewalReason(sub, date));
+  expect(results.every(r => r === 'OK')).toBe(true);
+});
