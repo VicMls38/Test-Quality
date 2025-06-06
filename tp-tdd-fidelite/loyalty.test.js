@@ -37,4 +37,27 @@ describe('calculateLoyaltyPoints', () => {
     expect(calculateLoyaltyPoints(cart)).toBe(37);
   });
 
+  describe('analyzeLoyaltyPoints', () => {
+    test('should return totalPoints and bonusApplied false when total <= 200', () => {
+        const cart = [
+        { type: 'standard', price: 50 },  // 5 pts
+        { type: 'premium', price: 40 }    // 8 pts
+        ];
+        expect(analyzeLoyaltyPoints(cart)).toEqual({ totalPoints: 13, bonusApplied: false });
+    });
+
+    test('should return totalPoints and bonusApplied true when total > 200', () => {
+        const cart = [
+        { type: 'standard', price: 150 },  // 15 pts
+        { type: 'premium', price: 60 }     // 12 pts
+        ];
+        // total points = 27 + 10 bonus = 37
+        expect(analyzeLoyaltyPoints(cart)).toEqual({ totalPoints: 37, bonusApplied: true });
+    });
+
+    test('should return 0 points and bonusApplied false for empty cart', () => {
+        expect(analyzeLoyaltyPoints([])).toEqual({ totalPoints: 0, bonusApplied: false });
+    });
+    });
+
 });
