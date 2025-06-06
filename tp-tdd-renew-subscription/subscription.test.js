@@ -91,3 +91,14 @@ test('Limite exacte (endDate = currentDate) → true', () => {
 });
 
 
+test('Renouvellement possible → "OK"', () => {
+  const sub = {
+    status: 'active',
+    endDate: '2025-06-01',
+    hasBeenRenewed: false,
+    unpaidDebt: false,
+    isTrial: false,
+  };
+  const date = '2025-06-06';
+  expect(getRenewalReason(sub, date)).toBe('OK');
+});
