@@ -19,7 +19,9 @@ function calculateLoyaltyPoints(cart) {
 
   for (const item of cart) {
     points += calculatePointsForItem(item);
-    totalPrice += item.price || 0;
+    if (typeof item.price === 'number' && item.price > 0) {
+      totalPrice += item.price;
+    }
   }
 
   if (totalPrice > 200) points += 10;
