@@ -102,3 +102,16 @@ test('Renouvellement possible → "OK"', () => {
   const date = '2025-06-06';
   expect(getRenewalReason(sub, date)).toBe('OK');
 });
+
+
+test('Statut non actif → "status"', () => {
+  const sub = {
+    status: 'paused',
+    endDate: '2025-06-01',
+    hasBeenRenewed: false,
+    unpaidDebt: false,
+    isTrial: false,
+  };
+  const date = '2025-06-06';
+  expect(getRenewalReason(sub, date)).toBe('status');
+});
