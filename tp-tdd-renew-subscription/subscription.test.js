@@ -141,3 +141,16 @@ test('Dette impayée → "unpaidDebt"', () => {
   const date = '2025-06-06';
   expect(getRenewalReason(sub, date)).toBe('unpaidDebt');
 });
+
+
+test('Essai gratuit → "trial"', () => {
+  const sub = {
+    status: 'active',
+    endDate: '2025-06-01',
+    hasBeenRenewed: false,
+    unpaidDebt: false,
+    isTrial: true,
+  };
+  const date = '2025-06-06';
+  expect(getRenewalReason(sub, date)).toBe('trial');
+});
