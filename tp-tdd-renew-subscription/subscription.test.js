@@ -37,3 +37,17 @@ test('Date non dépassée → false', () => {
   expect(canRenewSubscription(subscription, currentDate)).toBe(false);
 });
 
+
+
+test('Statut non "active" → false', () => {
+  const subscription = {
+    status: 'canceled',
+    endDate: '2025-06-01',
+    hasBeenRenewed: false,
+    unpaidDebt: false,
+    isTrial: false,
+  };
+  const currentDate = '2025-06-06';
+  expect(canRenewSubscription(subscription, currentDate)).toBe(false);
+});
+
