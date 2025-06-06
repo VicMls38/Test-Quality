@@ -29,4 +29,25 @@ function calculateLoyaltyPoints(cart) {
   return points;
 }
 
-module.exports = { calculateLoyaltyPoints };
+function analyzeLoyaltyPoints(cart) {
+  if (!Array.isArray(cart) || cart.length === 0) {
+    return { totalPoints: 0, bonusApplied: false };
+  }
+
+  let points = 0;
+  let totalPrice = 0;
+
+  for (const item of cart) {
+    points += calculatePointsForItem(item);
+    if (typeof item.price === 'number' && item.price > 0) {
+      totalPrice += item.price;
+    }
+  }
+
+  const bonusApplied = totalPrice > 200;
+  if (bonusApplied) points += 10;
+
+  return { totalPoints: points, bonusApplied };
+}
+
+module.exports = { calculateLoyaltyPoints, analyzeLoyaltyPoints };

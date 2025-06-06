@@ -1,4 +1,4 @@
-const { calculateLoyaltyPoints } = require('./loyalty');
+const { calculateLoyaltyPoints, analyzeLoyaltyPoints } = require('./loyalty');
 
 describe('calculateLoyaltyPoints', () => {
   test('should return 0 for empty cart', () => {
