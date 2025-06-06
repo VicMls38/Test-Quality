@@ -51,3 +51,17 @@ test('Statut non "active" → false', () => {
   expect(canRenewSubscription(subscription, currentDate)).toBe(false);
 });
 
+
+test('Présence de dette impayée → false', () => {
+  const subscription = {
+    status: 'active',
+    endDate: '2025-06-01',
+    hasBeenRenewed: false,
+    unpaidDebt: true,
+    isTrial: false,
+  };
+  const currentDate = '2025-06-06';
+  expect(canRenewSubscription(subscription, currentDate)).toBe(false);
+});
+
+
