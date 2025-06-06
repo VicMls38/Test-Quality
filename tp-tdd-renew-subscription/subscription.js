@@ -1,11 +1,18 @@
 function canRenewSubscription(subscription, currentDate) {
-  const { status, hasBeenRenewed, endDate } = subscription;
+  const {
+    status,
+    hasBeenRenewed,
+    endDate,
+  } = subscription;
+
+  const isActive = status === 'active';
+  const notRenewed = !hasBeenRenewed;
   const datePassed = new Date(endDate) <= new Date(currentDate);
-  if (status !== 'active') return false;
-  if (hasBeenRenewed) return false;
-  if (!datePassed) return false;
+
+  if (!isActive || !notRenewed || !datePassed) return false;
   return true;
 }
+
 
 
 
