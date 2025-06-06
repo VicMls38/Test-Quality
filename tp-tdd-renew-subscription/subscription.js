@@ -3,17 +3,19 @@ function canRenewSubscription(subscription, currentDate) {
     status,
     hasBeenRenewed,
     unpaidDebt,
+    isTrial,
     endDate,
   } = subscription;
 
   const isActive = status === 'active';
   const notRenewed = !hasBeenRenewed;
   const noDebt = !unpaidDebt;
+  const notTrial = !isTrial;
   const datePassed = new Date(endDate) <= new Date(currentDate);
 
-  if (!isActive || !notRenewed || !noDebt || !datePassed) return false;
-  return true;
+  return isActive && notRenewed && noDebt && notTrial && datePassed;
 }
+
 
 
 
