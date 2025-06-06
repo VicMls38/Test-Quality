@@ -58,6 +58,27 @@ describe('calculateLoyaltyPoints', () => {
     test('should return 0 points and bonusApplied false for empty cart', () => {
         expect(analyzeLoyaltyPoints([])).toEqual({ totalPoints: 0, bonusApplied: false });
     });
+  });
+
+
+  describe('performance test', () => {
+    test('should handle 1000 products quickly', () => {
+        const bigCart = Array.from({ length: 1000 }, (_, i) => ({
+        type: i % 2 === 0 ? 'standard' : 'premium',
+        price: 10 + (i % 20), // prix variant entre 10 et 29
+        }));
+
+        const start = Date.now();
+        const points = calculateLoyaltyPoints(bigCart);
+        const duration = Date.now() - start;
+
+        console.log(`Processed 1000 products in ${duration}ms`);
+
+        expect(typeof points).toBe('number');
+        expect(points).toBeGreaterThan(0);
+        expect(duration).toBeLessThan(100); // par exemple, moins de 100ms
     });
+  });
+
 
 });
