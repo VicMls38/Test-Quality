@@ -18,33 +18,22 @@ function canRenewSubscription(subscription, currentDate) {
 
 
 function getRenewalReason(subscription, currentDate) {
-  try {
-    const {
-      status,
-      hasBeenRenewed,
-      unpaidDebt,
-      isTrial,
-      endDate
-    } = subscription;
+  if (
+    typeof subscription !== 'object' ||
+    typeof subscription.status !== 'string' ||
+    typeof subscription.hasBeenRenewed !== 'boolean' ||
+    typeof subscription.unpaidDebt !== 'boolean' ||
+    typeof subscription.isTrial !== 'boolean' ||
+    typeof subscription.endDate !== 'string'
+  ) return 'invalid';
 
-    if (
-      typeof status !== 'string' ||
-      typeof hasBeenRenewed !== 'boolean' ||
-      typeof unpaidDebt !== 'boolean' ||
-      typeof isTrial !== 'boolean' ||
-      typeof endDate !== 'string'
-    ) return 'invalid';
+  if (subscription.status !== 'active') return 'status';
+  if (subscription.hasBeenRenewed) return 'alreadyRenewed';
+  if (subscription.unpaidDebt) return 'unpaidDebt';
+  if (subscription.isTrial) return 'trial';
+  if (new Date(subscription.endDate) > new Date(currentDate)) return 'date';
 
-    if (status !== 'active') return 'status';
-    if (hasBeenRenewed) return 'alreadyRenewed';
-    if (unpaidDebt) return 'unpaidDebt';
-    if (isTrial) return 'trial';
-    if (new Date(endDate) > new Date(currentDate)) return 'date';
-
-    return 'OK';
-  } catch {
-    return 'invalid';
-  }
+  return 'OK';
 }
 
 
