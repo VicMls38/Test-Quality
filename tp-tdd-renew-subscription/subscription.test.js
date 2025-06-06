@@ -128,3 +128,16 @@ test('Déjà renouvelé → "alreadyRenewed"', () => {
   const date = '2025-06-06';
   expect(getRenewalReason(sub, date)).toBe('alreadyRenewed');
 });
+
+
+test('Dette impayée → "unpaidDebt"', () => {
+  const sub = {
+    status: 'active',
+    endDate: '2025-06-01',
+    hasBeenRenewed: false,
+    unpaidDebt: true,
+    isTrial: false,
+  };
+  const date = '2025-06-06';
+  expect(getRenewalReason(sub, date)).toBe('unpaidDebt');
+});
