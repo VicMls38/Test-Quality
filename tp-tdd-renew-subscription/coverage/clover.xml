@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1749209600307" clover="3.2.0">
+  <project timestamp="1749209600307" name="All files">
+    <metrics statements="10" coveredstatements="10" conditionals="18" coveredconditionals="18" methods="2" coveredmethods="2" elements="30" coveredelements="30" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
+    <file name="subscription.js" path="/home/victor/Dev/test_logiciel/tp-tdd-renew-subscription/subscription.js">
+      <metrics statements="10" coveredstatements="10" conditionals="18" coveredconditionals="18" methods="2" coveredmethods="2"/>
+      <line num="2" count="7" type="stmt"/>
+      <line num="7" count="14" type="cond" truecount="2" falsecount="0"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="16" count="13" type="cond" truecount="2" falsecount="0"/>
+      <line num="17" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="18" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="19" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="20" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="22" count="3" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
