@@ -5,6 +5,17 @@ describe('calculateLoyaltyPoints', () => {
     expect(calculateLoyaltyPoints([])).toBe(0);
   });
 
+  test('should return 0 if cart is not an array', () => {
+    expect(calculateLoyaltyPoints(null)).toBe(0);
+    expect(calculateLoyaltyPoints({})).toBe(0);
+  });
+
+
+  test('should ignore product with invalid price', () => {
+    const cart = [{ type: 'standard', price: 'abc' }];
+    expect(calculateLoyaltyPoints(cart)).toBe(0);
+  });
+
   test('should return 1 point for a standard product costing 10€', () => {
     const cart = [{ type: 'standard', price: 10 }];
     expect(calculateLoyaltyPoints(cart)).toBe(1);
@@ -58,6 +69,35 @@ describe('calculateLoyaltyPoints', () => {
     test('should return 0 points and bonusApplied false for empty cart', () => {
         expect(analyzeLoyaltyPoints([])).toEqual({ totalPoints: 0, bonusApplied: false });
     });
+
+    test('analyzeLoyalty should report no bonus when under 200€', () => {
+        const cart = [{ type: 'standard', price: 50 }];
+        const result = analyzeLoyaltyPoints(cart);
+        expect(result).toEqual({ totalPoints: 5, bonusApplied: false });
+    });
+
+    test('should skip non-number price in analyzeLoyaltyPoints', () => {
+        const cart = [
+            { type: 'standard', price: 50 },
+            { type: 'premium', price: 'invalid' } // <= cette ligne va éviter totalPrice += price
+        ];
+        const result = analyzeLoyaltyPoints(cart);
+        // 50€ = 5 points (standard), pas de bonus
+        expect(result).toEqual({ totalPoints: 5, bonusApplied: false });
+    });
+
+    test('should skip negative price in analyzeLoyaltyPoints', () => {
+        const cart = [
+            { type: 'standard', price: -100 }, // <= ignoré pour totalPrice
+            { type: 'premium', price: 50 }
+        ];
+        // 50€ = 10 points (premium), pas de bonus
+        const result = analyzeLoyaltyPoints(cart);
+        expect(result).toEqual({ totalPoints: 10, bonusApplied: false });
+    });
+
+
+
   });
 
 

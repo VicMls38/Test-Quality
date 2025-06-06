@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1749202180203" clover="3.2.0">
-  <project timestamp="1749202180203" name="All files">
-    <metrics statements="26" coveredstatements="25" conditionals="27" coveredconditionals="23" methods="3" coveredmethods="3" elements="56" coveredelements="51" complexity="0" loc="26" ncloc="26" packages="1" files="1" classes="1"/>
+<coverage generated="1749203182914" clover="3.2.0">
+  <project timestamp="1749203182914" name="All files">
+    <metrics statements="25" coveredstatements="25" conditionals="26" coveredconditionals="26" methods="3" coveredmethods="3" elements="54" coveredelements="54" complexity="0" loc="25" ncloc="25" packages="1" files="1" classes="1"/>
     <file name="loyalty.js" path="/home/victor/Dev/test_logiciel/tp-tdd-fidelite/loyalty.js">
-      <metrics statements="26" coveredstatements="25" conditionals="27" coveredconditionals="23" methods="3" coveredmethods="3"/>
-      <line num="2" count="1010" type="cond" truecount="3" falsecount="1"/>
-      <line num="4" count="1010" type="cond" truecount="2" falsecount="1"/>
-      <line num="6" count="505" type="stmt"/>
-      <line num="8" count="505" type="stmt"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="15" count="7" type="cond" truecount="4" falsecount="0"/>
-      <line num="17" count="6" type="stmt"/>
-      <line num="18" count="6" type="stmt"/>
-      <line num="20" count="6" type="stmt"/>
+      <metrics statements="25" coveredstatements="25" conditionals="26" coveredconditionals="26" methods="3" coveredmethods="3"/>
+      <line num="2" count="1016" type="cond" truecount="4" falsecount="0"/>
+      <line num="4" count="1013" type="cond" truecount="2" falsecount="0"/>
+      <line num="6" count="506" type="stmt"/>
+      <line num="8" count="507" type="stmt"/>
+      <line num="13" count="10" type="cond" truecount="4" falsecount="0"/>
+      <line num="15" count="7" type="stmt"/>
+      <line num="16" count="7" type="stmt"/>
+      <line num="18" count="7" type="stmt"/>
+      <line num="19" count="1007" type="stmt"/>
+      <line num="20" count="1007" type="cond" truecount="4" falsecount="0"/>
       <line num="21" count="1006" type="stmt"/>
-      <line num="22" count="1006" type="cond" truecount="3" falsecount="1"/>
-      <line num="23" count="1006" type="stmt"/>
-      <line num="27" count="6" type="cond" truecount="2" falsecount="0"/>
-      <line num="29" count="6" type="stmt"/>
-      <line num="33" count="3" type="cond" truecount="4" falsecount="0"/>
-      <line num="34" count="1" type="stmt"/>
-      <line num="37" count="2" type="stmt"/>
-      <line num="38" count="2" type="stmt"/>
-      <line num="40" count="2" type="stmt"/>
-      <line num="41" count="4" type="stmt"/>
-      <line num="42" count="4" type="cond" truecount="3" falsecount="1"/>
-      <line num="43" count="4" type="stmt"/>
-      <line num="47" count="2" type="stmt"/>
-      <line num="48" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="50" count="2" type="stmt"/>
-      <line num="53" count="1" type="stmt"/>
+      <line num="25" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="27" count="7" type="stmt"/>
+      <line num="31" count="6" type="cond" truecount="4" falsecount="0"/>
+      <line num="32" count="1" type="stmt"/>
+      <line num="35" count="5" type="stmt"/>
+      <line num="36" count="5" type="stmt"/>
+      <line num="38" count="5" type="stmt"/>
+      <line num="39" count="9" type="stmt"/>
+      <line num="40" count="9" type="cond" truecount="4" falsecount="0"/>
+      <line num="41" count="7" type="stmt"/>
+      <line num="45" count="5" type="stmt"/>
+      <line num="46" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="48" count="5" type="stmt"/>
+      <line num="51" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

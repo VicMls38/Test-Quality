@@ -1,13 +1,11 @@
 function calculatePointsForItem(item) {
   if (typeof item.price !== 'number' || item.price <= 0) return 0;
 
-  switch (item.type) {
-    case 'standard':
-      return Math.floor(item.price / 10);
+  switch (item.type) {      
     case 'premium':
       return Math.floor(item.price / 10) * 2;
     default:
-      return 0;
+      return Math.floor(item.price / 10);
   }
 }
 
