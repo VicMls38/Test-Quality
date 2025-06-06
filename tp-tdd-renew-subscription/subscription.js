@@ -17,9 +17,14 @@ function canRenewSubscription(subscription, currentDate) {
 }
 
 
+function getRenewalReason(subscription, currentDate) {
+  return 'OK';
+}
 
 
 
 
 
-module.exports = { canRenewSubscription };
+
+
+module.exports = { canRenewSubscription, getRenewalReason };

@@ -1,4 +1,4 @@
-const { canRenewSubscription } = require('./subscription');
+const { canRenewSubscription, getRenewalReason } = require('./subscription');
 
 test('should return true when all conditions are met', () => {
   const subscription = {
