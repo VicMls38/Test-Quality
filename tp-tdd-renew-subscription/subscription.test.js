@@ -115,3 +115,16 @@ test('Statut non actif → "status"', () => {
   const date = '2025-06-06';
   expect(getRenewalReason(sub, date)).toBe('status');
 });
+
+
+test('Déjà renouvelé → "alreadyRenewed"', () => {
+  const sub = {
+    status: 'active',
+    endDate: '2025-06-01',
+    hasBeenRenewed: true,
+    unpaidDebt: false,
+    isTrial: false,
+  };
+  const date = '2025-06-06';
+  expect(getRenewalReason(sub, date)).toBe('alreadyRenewed');
+});
