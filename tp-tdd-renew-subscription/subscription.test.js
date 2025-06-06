@@ -154,3 +154,16 @@ test('Essai gratuit → "trial"', () => {
   const date = '2025-06-06';
   expect(getRenewalReason(sub, date)).toBe('trial');
 });
+
+
+test('Date pas dépassée → "date"', () => {
+  const sub = {
+    status: 'active',
+    endDate: '2025-06-10',
+    hasBeenRenewed: false,
+    unpaidDebt: false,
+    isTrial: false,
+  };
+  const date = '2025-06-06';
+  expect(getRenewalReason(sub, date)).toBe('date');
+});
