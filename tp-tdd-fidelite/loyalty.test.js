@@ -25,4 +25,16 @@ describe('calculateLoyaltyPoints', () => {
     expect(calculateLoyaltyPoints(cart)).toBe(14); // Math.floor(70/10)*2 = 14
   });
 
+  test('should add 10 bonus points if total price exceeds 200€', () => {
+    const cart = [
+      { type: 'standard', price: 150 },
+      { type: 'premium', price: 60 }
+    ];
+    // points standard: Math.floor(150/10) *1 = 15
+    // points premium: Math.floor(60/10) *2 = 12
+    // total points sans bonus = 27
+    // total price = 210 > 200 → bonus 10 pts
+    expect(calculateLoyaltyPoints(cart)).toBe(37);
+  });
+
 });
