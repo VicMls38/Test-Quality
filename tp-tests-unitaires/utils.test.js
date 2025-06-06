@@ -9,6 +9,11 @@ describe('sum', () => {
     expect(sum(0, 5)).toBe(5);
   });
 
+  test('addition avec une lettre', () => {
+    expect(() => sum('a', 5)).toThrow("Les 2 paramètres doivent être de type number");
+  });
+
+
   test('addition de deux nombres négatifs', () => {
     expect(sum(-2, -3)).toBe(-5);
   });
@@ -29,6 +34,18 @@ describe('isPalindrome', () => {
 
   test('chaîne vide', () => {
     expect(isPalindrome('')).toBe(true);
+  });
+
+  test('null doit lancer une erreur', () => {
+    expect(() => isPalindrome(null)).toThrow('Le paramètre doit être une chaîne de caractères');
+  });
+
+  test('undefined doit lancer une erreur', () => {
+    expect(() => isPalindrome(undefined)).toThrow('Le paramètre doit être une chaîne de caractères');
+   });
+
+  test('mauvais type (number) doit lancer une erreur', () => {
+    expect(() => isPalindrome(123)).toThrow('Le paramètre doit être une chaîne de caractères');
   });
 });
 
